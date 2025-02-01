@@ -24,7 +24,7 @@ function Home() {
         <div className="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
           <div>
             <img
-              src="images/burger.jpg"
+              src="/images/burger.jpg"
               alt="Grill & Burgers"
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
@@ -33,7 +33,7 @@ function Home() {
           </div>
           <div>
             <img
-              src="images/veg.jpg"
+              src="/images/veg.jpg"
               alt="Veggie Options"
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
@@ -42,7 +42,7 @@ function Home() {
           </div>
           <div>
             <img
-              src="images/pizza.jpg"
+              src="/images/pizza.jpg"
               alt="Milkshakes"
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
@@ -51,7 +51,7 @@ function Home() {
           </div>
           <div>
             <img
-              src="images/desserts.jpg"
+              src="/images/desserts.jpg"
               alt="Desserts"
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
@@ -72,7 +72,7 @@ function Home() {
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
               <img
-                src="images/beef.jpg"
+                src="/images/beef.jpg"
                 alt="Beef Burgers"
                 className="w-full h-48 object-cover"
               />
@@ -88,7 +88,7 @@ function Home() {
             </div>
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
               <img
-                src="images/chicken.jpg"
+                src="/images/chicken.jpg"
                 alt="Chicken Burgers"
                 className="w-full h-48 object-cover"
               />
@@ -104,7 +104,7 @@ function Home() {
             </div>
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
               <img
-                src="images/breakfast.jpg"
+                src="/images/breakfast.jpg"
                 alt="Breakfast Mood"
                 className="w-full h-48 object-cover"
               />

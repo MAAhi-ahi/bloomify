@@ -19,7 +19,7 @@ function Aboutus() {
                     </ul>
                 </div>
                 <div className="flex justify-center">
-                    <img src="images/burgers.jpg" alt="Our Specialties" className="rounded-lg shadow-lg w-full max-w-md" />
+                    <img src="/images/burgers.jpg" alt="Our Specialties" className="rounded-lg shadow-lg w-full max-w-md" />
                 </div>
             </section>
   
@@ -34,7 +34,7 @@ function Aboutus() {
                 <h2 className="text-3xl font-semibold text-gray-800">Meet Our Founder</h2>
                 <p className="text-gray-600 mt-4 text-center">Our journey started with a passion for serving delicious, hygienic, and authentic fast food. Here’s a glimpse of our founder.</p>
                 <div className="mt-6">
-                    <img src="images/MAAhi.jpg" alt="Founder" className="rounded-full shadow-lg w-40 h-40 object-cover" />
+                    <img src="/images/MAAhi.jpg" alt="Founder" className="rounded-full shadow-lg w-40 h-40 object-cover" />
                 </div>
             </section>
         </div>
