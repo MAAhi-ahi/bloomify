@@ -5,7 +5,7 @@ function Header() {
     <div className="flex items-center space-x-4 py-4">
       <Link to="/" className="flex items-center space-x-2">
         <img 
-          src="images/logo.png" 
+          src="/images/logo.png" 
           alt="Bloom food" 
           className="h-12 w-12 object-cover rounded-full shadow-lg"
         />
