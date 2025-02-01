@@ -9,6 +9,9 @@ import Tacobarmenu, {loader as getTacobarLoader} from "./feature/menu/Tacobarmen
 import AppLayout from "./ui/AppLayout";
 import Error from "./ui/Error"
 import Aboutus from "./ui/Aboutus";
+import BurgerDes from "./ui/description/BurgerDes";
+import PizzaDes from "./ui/description/PizzaDes";
+import TacoDes from "./ui/description/TacoDes";
 
 
 const router = createBrowserRouter([
@@ -22,6 +25,9 @@ const router = createBrowserRouter([
     { path: "/pizzamenu", element: <Pizzamenu/>, loader: getPizzaLoader, errorElement: <Error />,},
     { path: "/tacobarmenu", element: <Tacobarmenu/>, loader: getTacobarLoader, errorElement: <Error />,},
     {path: "/aboutus", element: <Aboutus/>, errorElement: <Error/>},
+    {path: "/aboutburger", element: <BurgerDes/>},
+    {path: "/aboutpizza", element: <PizzaDes/>},
+    {path: "/abouttacobar", element: <TacoDes/>},
     { path: "/cart", element: <Cart />, },
     { path: "/order/new", element: <CreateOrder />, action: createOrderAction },
 

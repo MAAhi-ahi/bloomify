@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function Home() {
   return (
     <div>
@@ -29,7 +30,7 @@ function Home() {
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
             <h3 className="font-semibold">Grill &apos;n Burgers</h3>
-            <button className="mt-2 text-sm underline">See More</button>
+            <button className="mt-2 text-sm underline"><Link to="/aboutburger">See More</Link></button>
           </div>
           <div>
             <img
@@ -38,7 +39,7 @@ function Home() {
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
             <h3 className="font-semibold">Veggie Options</h3>
-            <button className="mt-2 text-sm underline">See More</button>
+            <button className="mt-2 text-sm underline"><Link to="/aboutpizza">See More</Link></button>
           </div>
           <div>
             <img
@@ -47,7 +48,7 @@ function Home() {
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
             <h3 className="font-semibold">Pizza</h3>
-            <button className="mt-2 text-sm underline">See More</button>
+            <button className="mt-2 text-sm underline"><Link to="/abouttacobar">See More</Link></button>
           </div>
           <div>
             <img

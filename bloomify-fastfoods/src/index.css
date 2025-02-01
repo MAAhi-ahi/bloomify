@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Bangers&display=swap');
+
+.pizza-font {
+  font-family: 'Chewy', 'Bangers', cursive;
+}
+
+
 
 /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
 .loader {
