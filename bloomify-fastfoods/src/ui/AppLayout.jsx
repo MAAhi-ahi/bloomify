@@ -1,7 +1,7 @@
 import { Outlet, useNavigation } from "react-router-dom";
 import Loader from "./Loader";
 import Navbar from "./Navbar";
-import CartOverView from "../feature/cart/CartOverview";
+//import CartOverView from "../feature/cart/CartOverview";
 function AppLayout() {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
@@ -13,7 +13,7 @@ function AppLayout() {
         <main>
           <Outlet />
         </main>
-        <CartOverView />
+        {/*<CartOverView />*/}
       </div>
     </div>
   );
