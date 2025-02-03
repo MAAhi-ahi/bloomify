@@ -29,7 +29,7 @@ function Home() {
               alt="Grill & Burgers"
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
-            <h3 className="font-semibold">Grill &apos;n Burgers</h3>
+            <h3 className="font-semibold">BURGERS</h3>
             <button className="mt-2 text-sm underline"><Link to="/aboutburger">See More</Link></button>
           </div>
           <div>
@@ -38,25 +38,25 @@ function Home() {
               alt="Veggie Options"
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
-            <h3 className="font-semibold">Veggie Options</h3>
+            <h3 className="font-semibold">PIZZA</h3>
             <button className="mt-2 text-sm underline"><Link to="/aboutpizza">See More</Link></button>
           </div>
           <div>
             <img
-              src="/images/pizza.jpg"
+              src="/images/tacos.jpg"
               alt="Milkshakes"
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
-            <h3 className="font-semibold">Pizza</h3>
+            <h3 className="font-semibold">TACO BAR</h3>
             <button className="mt-2 text-sm underline"><Link to="/abouttacobar">See More</Link></button>
           </div>
           <div>
             <img
-              src="/images/desserts.jpg"
+              src="/images/fawss.jpg"
               alt="Desserts"
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
-            <h3 className="font-semibold">Desserts</h3>
+            <h3 className="font-semibold">QUCK ANSWERS</h3>
             <button className="mt-2 text-sm underline">See More</button>
           </div>
         </div>
