@@ -11,7 +11,7 @@ function AppLayout() {
       {isLoading && <Loader />}
       <Navbar />
       <div>
-        <main>
+        <main className="pt-24">
           <Outlet />
         </main>
         {/*<CartOverView />*/}

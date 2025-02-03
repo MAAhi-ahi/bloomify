@@ -15,7 +15,7 @@ function Navbar() {
   };
 
   return (
-    <div className="bg-gray-50 shadow-md">
+    <div className="bg-gray-50 shadow-md fixed left-0 right-0">
       <header className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Header />
         

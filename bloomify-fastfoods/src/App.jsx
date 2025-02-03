@@ -12,6 +12,7 @@ import Aboutus from "./ui/Aboutus";
 import BurgerDes from "./ui/description/BurgerDes";
 import PizzaDes from "./ui/description/PizzaDes";
 import TacoDes from "./ui/description/TacoDes";
+import Faqs from "./ui/description/Faqs";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
     {path: "/aboutburger", element: <BurgerDes/>},
     {path: "/aboutpizza", element: <PizzaDes/>},
     {path: "/abouttacobar", element: <TacoDes/>},
+    {path: "/faqs", element: <Faqs/>},
     { path: "/cart", element: <Cart />, },
     { path: "/order/new", element: <CreateOrder />, action: createOrderAction },
 

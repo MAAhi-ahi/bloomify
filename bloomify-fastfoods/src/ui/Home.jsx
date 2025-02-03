@@ -57,7 +57,7 @@ function Home() {
               className="mx-auto mb-4 rounded-full w-20 h-20 object-cover"
             />
             <h3 className="font-semibold">QUCK ANSWERS</h3>
-            <button className="mt-2 text-sm underline">See More</button>
+            <button className="mt-2 text-sm underline"><Link to="/faqs">See More</Link></button>
           </div>
         </div>
       </section>
@@ -122,6 +122,27 @@ function Home() {
           </div>
         </div>
       </section>
+        {/* Best Section */}
+        <div className="mt-12 bg-yellow-50 p-6 rounded-xl shadow-md flex flex-col md:flex-row items-center">
+        <img
+          src="/images/ymmy.jpg"
+          alt="Happy Customer Eating Fast Food"
+          className="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-lg"
+        />
+        <div className="md:ml-8 mt-4 md:mt-0 text-center md:text-left">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+            Joy in Every Bite!
+          </h2>
+          <p className="text-gray-700 mt-2">
+            Experience the sheer delight of savoring our mouth-watering fast food! From crispy burgers to cheesy pizzas, every bite is crafted with love and passion. 
+            Feel the happiness, taste the difference, and indulge in flavors that bring smiles.
+          </p>
+          <p className="text-gray-700 mt-4 italic">
+            All these delicious moments are brought to you by <span className="font-bold text-red-500">Bloomify</span> — your trusted fast food destination!
+          </p>
+        </div>
+        </div>
+
     </div>
   );
 }
