@@ -24,7 +24,7 @@ export default Loader; */
 function Loader() {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-slate-200/40 backdrop-blur-sm z-50">
-      <div className="loaders"></div>
+      <div className="loader"></div>
     </div>
   );
 }
