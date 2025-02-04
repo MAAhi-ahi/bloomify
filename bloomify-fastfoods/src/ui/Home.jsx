@@ -7,12 +7,16 @@ function Home() {
         style={{ backgroundImage: "url('images/web-2.jpg')" }}
       >
         <div className="bg-black bg-opacity-50 text-white text-center py-20 px-4">
-          <h1 className="text-4xl md:text-6xl font-bold">
+        {/* <h1 className="text-4xl md:text-6xl font-bold">
             BEST BURGERS IN THE WORLD
-          </h1>
+          </h1> */}
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-5xl font-semibold text-center text-white  p-6 rounded-md ">
+  Satisfy Your Cravings with the Best Burgers, Pizzas & Tacos from Bloomify!
+</h1>
+
+
           <p className="mt-4 text-lg md:text-xl">
-            Mouthwatering perfection starts with 100% pure beef patties and best
-            sauce sandwiched between a sesame seed bun.
+          Savor the taste of perfection with our wide range of mouthwatering options – from juicy chicken and beef burgers to tantalizing pizzas and fish tacos. Each bite is crafted with the finest ingredients, all nestled between a fresh, soft bun or perfect pizza crust.
           </p>
           <button className="mt-6 bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-full text-lg">
             Add to Order
@@ -67,8 +71,7 @@ function Home() {
         <div className="container mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold">Choose & Enjoy</h2>
           <p className="mt-4 text-gray-600">
-            Lorem ipsum dolor sit amet, vero nostrum comprehensam et. Ducat
-            molestie pri, et mei natum fastidii.
+          Delicious, fresh, and made just for you! Select your favorite dish and enjoy every moment with Bloomify.
           </p>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
@@ -78,45 +81,45 @@ function Home() {
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
-                <h3 className="text-xl font-semibold">Beef Burgers</h3>
+                <h3 className="text-xl font-semibold">Burgers</h3>
                 <p className="text-gray-600 mt-2">
-                  Ex utro delicatum per facer operatione duo cu cum ullum.
+                Taste the ultimate perfection—Bloomify’s burgers aren’t just good, they’re the best! 🍔🔥
                 </p>
-                <button className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full text-sm">
+               <Link to="/burgermenu"> <button className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full text-sm">
                   Show More
-                </button>
+                </button></Link>
               </div>
             </div>
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
               <img
-                src="/images/chicken.jpg"
+                src="/images/pizza-0.jpg"
                 alt="Chicken Burgers"
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
-                <h3 className="text-xl font-semibold">Chicken Burgers</h3>
+                <h3 className="text-xl font-semibold">Pizza&apos;s</h3>
                 <p className="text-gray-600 mt-2">
-                  Ex utro delicatum per facer operatione duo cu cum ullum.
+                Every slice of Bloomify&apos;s pizza is a masterpiece—crafted with love, and bursting with flavors that will leave you craving more! 🍕✨
                 </p>
-                <button className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full text-sm">
+               <Link to="/pizzamenu"> <button className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full text-sm">
                   Show More
-                </button>
+                </button></Link>
               </div>
             </div>
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
               <img
-                src="/images/breakfast.jpg"
+                src="/images/tacos-0.jpg"
                 alt="Breakfast Mood"
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
-                <h3 className="text-xl font-semibold">Breakfast Mood</h3>
+                <h3 className="text-xl font-semibold">Taco bar</h3>
                 <p className="text-gray-600 mt-2">
-                  Ex utro delicatum per facer operatione duo cu cum ullum.
+                Dive into the bold flavors of Bloomify’s Taco Bar—where every bite is a fiesta of taste, freshness, and excitement! 🌮🎉
                 </p>
-                <button className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full text-sm">
+               <Link to="/tacobarmenu"> <button className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full text-sm">
                   Show More
-                </button>
+                </button></Link>
               </div>
             </div>
           </div>
