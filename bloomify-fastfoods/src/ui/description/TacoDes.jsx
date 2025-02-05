@@ -1,11 +1,10 @@
+import Tacosbar from "./Tacosbar";
 
 
 function TacoDes() {
   return (
     <div className="container mx-auto p-4">
-       <h1 className="text-3xl md:text-5xl font-extrabold text-center text-orange-600 uppercase tracking-wide drop-shadow-md pizza-font">
-       Taco Tales<span className="text-yellow-400"> Secrets You Never Knew</span> 
-      </h1>
+     <Tacosbar/>
 
       <div className="mb-6">
         <img

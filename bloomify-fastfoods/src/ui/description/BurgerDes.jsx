@@ -1,9 +1,9 @@
+import BurgerHeader from "./BurgerHeader";
+
 function BurgerDes() {
   return (
     <div className="container mx-auto p-4 mt-8">
-       <h1 className="text-3xl md:text-5xl font-extrabold text-center text-orange-600 uppercase tracking-wide drop-shadow-md pizza-font">
-       Slice of Flavor<span className="text-yellow-400">The Burger You Didn&apos;t Know</span> 
-      </h1>
+     <BurgerHeader/>
       <img
         src="images/aboutburger.jpg" // Replace with your burger image path
         alt="Delicious Burger"
@@ -75,3 +75,7 @@ function BurgerDes() {
 }
 
 export default BurgerDes;
+
+
+
+

@@ -1,13 +1,11 @@
+import PIzzaHeader from "./PIzzaHeader";
+
 function PizzaDes() {
     return (
       <div className="container mx-auto p-4 mt-8">
-       { /*<h1 className="text-3xl md:text-4xl font-bold text-center mb-4">Pizza</h1> */}
-       <h1 className="text-3xl md:text-5xl font-extrabold text-center text-orange-600 uppercase tracking-wide drop-shadow-md pizza-font">
-       Pizza Uncovered <span className="text-yellow-400">The Truth Behind Every Bite</span> 
-      </h1>
-  
+        <PIzzaHeader/>
         <img
-          src="images/Pizza Grilled Cheese.jpg" // Replace with your pizza image path
+          src="images/Pizza Grilled Cheese.jpg" 
           alt="Delicious Pizza"
           className="mx-auto mb-10 mt-12 rounded-lg shadow-lg w-full sm:w-80 sm:h-80 h-64 object-cover" // Styled for responsive design
         />
