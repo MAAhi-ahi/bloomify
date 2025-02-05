@@ -2,7 +2,7 @@ import PIzzaHeader from "./PIzzaHeader";
 
 function PizzaDes() {
     return (
-      <div className="container mx-auto p-4 mt-8">
+      <div className="container mx-auto p-4">
         <PIzzaHeader/>
         <img
           src="images/Pizza Grilled Cheese.jpg" 
@@ -68,7 +68,9 @@ function PizzaDes() {
             Fast Order
           </a>
         </section>
+        <div className="border-b-2 border-gray-300 mt-6 w-full"></div>
       </div>
+      
     );
   }
   

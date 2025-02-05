@@ -2,14 +2,13 @@ import BurgerHeader from "./BurgerHeader";
 
 function BurgerDes() {
   return (
-    <div className="container mx-auto p-4 mt-8">
-     <BurgerHeader/>
-      <img
-        src="images/aboutburger.jpg" // Replace with your burger image path
-        alt="Delicious Burger"
-       className="mx-auto mb-6 mt-10 rounded-lg shadow-md w-full sm:w-80 sm:h-80 h-64 object-cover" // Adjust for mobile and larger screens
-      />
-
+      <div className="container mx-auto p-4 mt-0">
+       <BurgerHeader/>
+       <img
+          src="images/aboutburger.jpg" 
+          alt="Delicious Burger"
+          className=" mx-auto mb-6 mt-10 rounded-lg shadow-md w-full sm:w-80 sm:h-80 h-64 object-cover" 
+        />
       <section>
         <h2 className="text-2xl md:text-3xl font-semibold mb-2">About Our Burger</h2>
         <p className="text-base md:text-lg mb-4">
@@ -70,7 +69,9 @@ function BurgerDes() {
           Fast Order
         </a>
       </section>
-    </div>
+      <div className="border-b-2 border-gray-300 mt-6 w-full"></div>
+       </div> 
+      
   );
 }
 

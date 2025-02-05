@@ -13,6 +13,7 @@ function Pizzamenu() {
           <PizzaItem pizza={pizza} key={pizza.id} />
         ))}
       </ul>
+      <div className="border-b-2 border-gray-300 mt-6 w-full"></div>
     </div>
   );
 }

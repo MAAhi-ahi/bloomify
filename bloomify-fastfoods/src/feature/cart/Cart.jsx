@@ -29,10 +29,17 @@ function Cart() {
 
   return (
     <div className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md mt-8">
-      {/* Back to Menu Link */}
-      <Link to="/pizzamenu" className="text-sm text-indigo-600 hover:text-indigo-800">
-        &larr; Back to menu
+      <div className=''>
+      <Link to="/pizzamenu" className="text-sm text-blue-600 hover:text-red-800">
+        &larr; Back to pizza menu <br/>
       </Link>
+      <Link to="/burgermenu" className="text-sm text-blue-600 hover:text-red-800">
+        &larr; Back to menu burger <br/>
+      </Link>
+      <Link to="/tacomenu" className="text-sm text-blue-600 hover:text-red-800">
+        &larr; Back to taco-bar
+      </Link>
+      </div>
 
       <h2 className="text-2xl font-semibold text-gray-800 my-4">Your Cart</h2>
 
@@ -63,7 +70,7 @@ function Cart() {
       <div className="mt-4 flex space-x-2">
         <Link
           to="/order/new"
-          className="w-full py-2 text-center bg-indigo-600 text-white text-sm rounded-md hover:bg-indigo-700 transition duration-300"
+          className="w-full py-2 text-center bg-red-600 text-white text-sm rounded-md hover:bg-red-700 transition duration-300"
         >
           Order Pizzas
         </Link>
@@ -73,6 +80,7 @@ function Cart() {
           Clear Cart
         </button>
       </div>
+      <div className="border-b-2 border-gray-300 mt-6 w-full"></div>
     </div>
   );
 }

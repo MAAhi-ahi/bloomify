@@ -13,6 +13,7 @@ function Tacobarmenu() {
           <TacobarItem taco={taco} key={taco.id} />
         ))}
       </ul>
+      <div className="border-b-2 border-gray-300 mt-6 w-full"></div>
     </div>
   );
 }

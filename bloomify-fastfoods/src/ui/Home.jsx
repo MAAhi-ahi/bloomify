@@ -7,14 +7,9 @@ function Home() {
         style={{ backgroundImage: "url('images/web-2.jpg')" }}
       >
         <div className="bg-black bg-opacity-50 text-white text-center py-20 px-4">
-        {/* <h1 className="text-4xl md:text-6xl font-bold">
-            BEST BURGERS IN THE WORLD
-          </h1> */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-5xl font-semibold text-center text-white  p-6 rounded-md ">
-  Satisfy Your Cravings with the Best Burgers, Pizzas & Tacos from Bloomify!
-</h1>
-
-
+                 Satisfy Your Cravings with the Best Burgers, Pizzas & Tacos from Bloomify!
+          </h1>
           <p className="mt-4 text-lg md:text-xl">
           Savor the taste of perfection with our wide range of mouthwatering options – from juicy chicken and beef burgers to tantalizing pizzas and fish tacos. Each bite is crafted with the finest ingredients, all nestled between a fresh, soft bun or perfect pizza crust.
           </p>
@@ -145,7 +140,7 @@ function Home() {
           </p>
         </div>
         </div>
-
+        <div className="border-b-2 border-gray-300 mt-6 w-full"></div>
     </div>
   );
 }

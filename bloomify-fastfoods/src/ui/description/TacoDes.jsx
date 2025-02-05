@@ -75,6 +75,7 @@ function TacoDes() {
           Fast Order
         </a>
       </section>
+      <div className="border-b-2 border-gray-300 mt-6 w-full"></div>
     </div>
   );
 }
