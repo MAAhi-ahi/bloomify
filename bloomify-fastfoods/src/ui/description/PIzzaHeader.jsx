@@ -2,13 +2,11 @@ import { FaPizzaSlice } from "react-icons/fa"; // Pizza Icon 🍕
 import { FaLeaf } from "react-icons/fa"; // Leaf Icon 🌿
 import { BsFlower1 } from "react-icons/bs"; // Flower Icon 🌸
 
-
-
 function PIzzaHeader() {
     return (
         
    <div className="text-center">
-      <h1 className="text-3xl md:text-5xl font-anton font-normal not-italic text-stone-800 uppercase tracking-wide shadow-inner inline-block">
+      <h1 className="text-3xl md:text-5xl font-anton font-normal not-italic text-stone-800 uppercase tracking-wide shadow-inner inline-block relative">
         Slice of Heaven{" "}
         <FaPizzaSlice className="inline-block text-yellow-500 w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />
         <span className="text-stone-800">The Pizza You Crave</span>
