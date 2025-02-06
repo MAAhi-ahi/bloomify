@@ -1,8 +1,25 @@
+import { useDispatch } from "react-redux";
 import { formatCurrency } from "../../utitlis/helpers";
+import { addItem } from "../cart/cartSlice";
 /* eslint-disable react/prop-types */
 
 function PizzaItem({ pizza }) {
-  const { name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+  const {id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+  const dispatch = useDispatch();
+
+  function handleAddTocart() {
+    console.log(id);
+    const newItme = {
+      itemId: id,
+      name,
+      quantity: 1, 
+      unitPrice,
+      totalPrice: unitPrice * 1,  
+
+
+    };
+    dispatch(addItem(newItme))
+  }
 
   return (
     <li className="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
@@ -22,7 +39,7 @@ function PizzaItem({ pizza }) {
           )}
         </div>
         {!soldOut && (
-          <button className="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition duration-300">
+          <button onClick={handleAddTocart} className="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition duration-300">
             Add to Cart
           </button>
         )}

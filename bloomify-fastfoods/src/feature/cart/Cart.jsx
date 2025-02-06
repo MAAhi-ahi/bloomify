@@ -1,31 +1,15 @@
 import { Link } from 'react-router-dom';
+import { clearCart, getCart } from './cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import EmptyCart from "./EmptyCart";
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetale',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
+
 
 function Cart() {
-  const cart = fakeCart;
+  const cart = useSelector(getCart)
+  const dispatch = useDispatch()
+
+  if (!cart.length) return <EmptyCart/>
 
   return (
     <div className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md mt-8">
@@ -46,7 +30,7 @@ function Cart() {
       {/* Cart Items */}
       <div className="space-y-4">
         {cart.map((item) => (
-          <div key={item.pizzaId} className="flex justify-between items-center border-b pb-2">
+          <div key={item.itemId} className="flex justify-between items-center border-b pb-2">
             <div>
               <h3 className="text-md font-medium text-gray-800">{item.name}</h3>
               <p className="text-xs text-gray-500">Qty: {item.quantity}</p>
@@ -75,6 +59,7 @@ function Cart() {
           Order Pizzas
         </Link>
         <button
+         onClick={() => dispatch(clearCart())}
           className="w-full py-2 bg-gray-400 text-white text-sm rounded-md hover:bg-gray-500 transition duration-300"
         >
           Clear Cart

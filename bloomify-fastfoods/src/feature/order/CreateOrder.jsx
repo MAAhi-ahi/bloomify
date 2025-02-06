@@ -1,41 +1,30 @@
-//import { useState } from "react";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
+import { useSelector } from "react-redux";
+import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
+import EmptyCart from "../cart/EmptyCart";
+import store from "../../store";
+import { formatCurrency } from "../../utitlis/helpers";
+import { useState } from "react";
 
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
     str,
   );
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: "Mediterranean",
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: "Vegetale",
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: "Spinach and Mushroom",
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
+
 
 function CreateOrder() {
+  const [withPriority, setWithPriority] = useState(false);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const formErrors = useActionData();
-  const cart = fakeCart;
+  const cart = useSelector(getCart);
+  const totalCartPrice = useSelector(getTotalCartPrice);
+  const priorityPrice = withPriority ? totalCartPrice * 0.2 : 0;
+  const totalPrice = totalCartPrice + priorityPrice
+
+  if (!cart.length) return <EmptyCart/>
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-md mt-12">
@@ -89,6 +78,8 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
+            value={withPriority}
+            onChange={(e) => setWithPriority(e.target.value)}
             className="h-4 w-4 text-indigo-600"
           />
           <label htmlFor="priority" className="text-sm text-gray-700">
@@ -98,12 +89,13 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+
           <button
             type="submit"
             disabled={isSubmitting}
             className="w-full bg-red-500 text-white p-2 rounded-lg hover:bg-red-700 transition"
           >
-            {isSubmitting ? "Placing order..." : "Order now"}
+            {isSubmitting ? "Placing order..." : `Order now from ${formatCurrency(totalPrice)}`}
           </button>
         </div>
       </Form>
@@ -111,6 +103,7 @@ function CreateOrder() {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
@@ -118,7 +111,7 @@ export async function action({ request }) {
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
-    priority: data.priority === "on",
+    priority: data.priority === "true",
   };
   const errors = {};
   if (!isValidPhone(order.phone))
@@ -127,6 +120,7 @@ export async function action({ request }) {
   if (Object.keys(errors).length > 0) return errors;
 
   const newOrder = await createOrder(order);
+  store.dispatch(clearCart());
   return redirect(`/order/${newOrder.id}`);
 }
 
