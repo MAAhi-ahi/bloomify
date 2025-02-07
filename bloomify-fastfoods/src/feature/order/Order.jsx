@@ -195,13 +195,13 @@ function Order() {
 
       <div className="space-y-4 mb-6">
         <div className="flex justify-between items-center text-lg sm:text-xl text-gray-800">
-          <span>Pizza Price:</span>
+          <span>Your Price:</span>
           <span className="font-semibold">{formatCurrency(orderPrice)}</span>
         </div>
 
         {priority && (
           <div className="flex justify-between items-center text-lg sm:text-xl text-gray-800">
-            <span>Priority Price:</span>
+            <span>Delivery charge:</span>
             <span className="font-semibold">
               {formatCurrency(priorityPrice)}
             </span>
@@ -224,19 +224,7 @@ function Order() {
           Track Order
         </button>
       </div>
-
-      {/* Priority Checkbox to toggle state */}
-      <div className="mt-6 flex justify-between items-center text-gray-800">
-        <label htmlFor="priority-checkbox" className="text-lg sm:text-xl">
-          Mark as Priority
-        </label>
-        <input
-          type="checkbox"
-          id="priority-checkbox"
-          checked={priority}
-          onChange={(e) => setPriority(e.target.checked)} // Toggle state
-        />
-      </div>
+      <div className="border-b-2 border-gray-300 mt-6 w-full"></div>
     </div>
   );
 }

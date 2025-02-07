@@ -23,10 +23,10 @@ const router = createBrowserRouter([
   errorElement: <Error/>,
   
   children: [
-    { path: "/", element: <Home/>},
-    { path: "/burgermenu", element: <Burgermenu/>, loader: getBurgerLoader, errorElement: <Error />, },
-    { path: "/pizzamenu", element: <Pizzamenu/>, loader: getPizzaLoader, errorElement: <Error />,},
-    { path: "/tacobarmenu", element: <Tacobarmenu/>, loader: getTacobarLoader, errorElement: <Error />,},
+    {path: "/", element: <Home/>},
+    {path: "/burgermenu", element: <Burgermenu/>, loader: getBurgerLoader, errorElement: <Error />, },
+    {path: "/pizzamenu", element: <Pizzamenu/>, loader: getPizzaLoader, errorElement: <Error />,},
+    {path: "/tacobarmenu", element: <Tacobarmenu/>, loader: getTacobarLoader, errorElement: <Error />,},
     {path: "/menuhighlight", element: <MenuHighlight/>},
     {path: "/aboutus", element: <Aboutus/>, errorElement: <Error/>},
     {path: "/aboutburger", element: <BurgerDes/>},

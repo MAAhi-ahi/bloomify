@@ -11,7 +11,7 @@ function AppLayout() {
 
   return (
     <div>
-      {isLoading && <Loader />}
+      {isLoading &&  <Loader />}
       <Navbar />
       <div>
         <main className="pt-24">
