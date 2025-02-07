@@ -10,7 +10,7 @@ const EmptyCart = () => {
         Craving something delicious? Add some mouth-watering fast food to your cart now and enjoy a feast!
       </p>
       <button className="mt-5 px-6 py-3 bg-red-500 text-white rounded-full shadow-lg hover:bg-red-600 transition-transform transform hover:scale-105">
-      <Link to="/pizzamenu"> Explore Menu 🍔</Link>
+      <Link to="/menuhighlight"> Explore  Our Menu Showcase!</Link>
       </button>
     </div>
   );

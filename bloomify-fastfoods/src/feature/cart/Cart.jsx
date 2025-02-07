@@ -5,6 +5,7 @@ import EmptyCart from "./EmptyCart";
 
 
 
+
 function Cart() {
   const cart = useSelector(getCart)
   const dispatch = useDispatch()
@@ -13,18 +14,10 @@ function Cart() {
 
   return (
     <div className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md mt-8">
-      <div className=''>
-      <Link to="/pizzamenu" className="text-sm text-blue-600 hover:text-red-800">
-        &larr; Back to pizza menu <br/>
-      </Link>
-      <Link to="/burgermenu" className="text-sm text-blue-600 hover:text-red-800">
-        &larr; Back to menu burger <br/>
-      </Link>
-      <Link to="/tacomenu" className="text-sm text-blue-600 hover:text-red-800">
-        &larr; Back to taco-bar
-      </Link>
-      </div>
-
+     
+     <Link to="/menuhighlight" className="text-sm text-blue-600 hover:text-red-800">
+      &larr; Back to menu showcase!  <br/> </Link>
+      
       <h2 className="text-2xl font-semibold text-gray-800 my-4">Your Cart</h2>
 
       {/* Cart Items */}

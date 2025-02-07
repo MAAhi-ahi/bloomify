@@ -13,6 +13,8 @@ import BurgerDes from "./ui/description/BurgerDes";
 import PizzaDes from "./ui/description/PizzaDes";
 import TacoDes from "./ui/description/TacoDes";
 import Faqs from "./ui/description/Faqs";
+import MenuHighlight from "./feature/menu/MenuHighlight";
+
 
 
 const router = createBrowserRouter([
@@ -25,13 +27,15 @@ const router = createBrowserRouter([
     { path: "/burgermenu", element: <Burgermenu/>, loader: getBurgerLoader, errorElement: <Error />, },
     { path: "/pizzamenu", element: <Pizzamenu/>, loader: getPizzaLoader, errorElement: <Error />,},
     { path: "/tacobarmenu", element: <Tacobarmenu/>, loader: getTacobarLoader, errorElement: <Error />,},
+    {path: "/menuhighlight", element: <MenuHighlight/>},
     {path: "/aboutus", element: <Aboutus/>, errorElement: <Error/>},
     {path: "/aboutburger", element: <BurgerDes/>},
     {path: "/aboutpizza", element: <PizzaDes/>},
     {path: "/abouttacobar", element: <TacoDes/>},
     {path: "/faqs", element: <Faqs/>},
-    { path: "/cart", element: <Cart />, },
-    { path: "/order/new", element: <CreateOrder />, action: createOrderAction },
+    {path: "/cart", element: <Cart />, },
+    {path: "/order/new", element: <CreateOrder />, action: createOrderAction },
+    
 
     {
       path: "/order/:orderId",

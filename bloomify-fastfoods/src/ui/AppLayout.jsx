@@ -1,11 +1,14 @@
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Loader from "./Loader";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CartOverView from "../feature/cart/CartOverview";
+
 function AppLayout() {
-  const navigation = useNavigation();
-  const isLoading = navigation.state === "loading";
+  const location = useLocation();
+  const isLoading = location.state === "loading";
+  const noFooterPages = ["/cart", "/order/new",]; 
+
   return (
     <div>
       {isLoading && <Loader />}
@@ -15,10 +18,11 @@ function AppLayout() {
           <Outlet />
         </main>
         <CartOverView />
-        <Footer/>
+        {!noFooterPages.includes(location.pathname) && <Footer />}
       </div>
     </div>
   );
 }
 
 export default AppLayout;
+

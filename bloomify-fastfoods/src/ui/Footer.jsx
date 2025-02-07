@@ -7,33 +7,32 @@ const Footer = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm md:text-base">
         {/* About Kolafoods */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">ABOUT KOLAFOODS</h3>
-          <ul className="space-y-1 underline">
-            <li><Link to="/about" className="hover:text-red-500">ABOUT US</Link></li>
-            <li><Link to="/culture" className="hover:text-red-500">CULTURE</Link></li>
-            <li><Link to="/blog" className="hover:text-red-500">BLOG</Link></li>
-            <li><Link to="/careers" className="hover:text-red-500">CAREERS</Link></li>
-            <li><Link to="/contact" className="hover:text-red-500">CONTACT</Link></li>
+          <h3 className="text-[14px] font-semibold mb-2">ABOUT KOLAFOODS</h3>
+          <ul className="space-y-1  sm:text-sm text-[10px]">
+            <li><Link to="/about" className="hover:text-red-500">About Us</Link></li>
+            <li><Link to="/culture" className="hover:text-red-500">Culture</Link></li>
+            <li><Link to="/blog" className="hover:text-red-500">Blog</Link></li>
+            <li><Link to="/careers" className="hover:text-red-500">Careers</Link></li>
+            <li><Link to="/contact" className="hover:text-red-500">Contact</Link></li>
           </ul>
         </div>
 
         {/* Popular Cities */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">POPULAR CITIES</h3>
-          <ul className="space-y-1">
-            <li><Link to="/boston" className="hover:text-red-500">BOSTON</Link></li>
-            <li><Link to="/brooklyn" className="hover:text-red-500">BROOKLYN</Link></li>
-            <li><Link to="/chicago" className="hover:text-red-500">CHICAGO</Link></li>
-            <li><Link to="/hoboken" className="hover:text-red-500">HOBOKEN</Link></li>
-            <li><Link to="/los-angeles" className="hover:text-red-500">LOS ANGELES</Link></li>
-            <li><Link to="/new-york" className="hover:text-red-500">NEW YORK</Link></li>
-            <li><Link to="/san-francisco" className="hover:text-red-500">SAN FRANCISCO</Link></li>
+          <h3 className="text-[14px] font-semibold mb-2">POPULAR CITIES</h3>
+          <ul className="space-y-1 sm:text-sm text-[10px]">
+            <li><Link to="/boston" className="hover:text-red-500">Dhaka </Link></li>
+            <li><Link to="/brooklyn" className="hover:text-red-500">Chattogram </Link></li>
+            <li><Link to="/chicago" className="hover:text-red-500">Khulna </Link></li>
+            <li><Link to="/hoboken" className="hover:text-red-500">Sylhet </Link></li>
+            <li><Link to="/los-angeles" className="hover:text-red-500">Rajshahi </Link></li>
           </ul>
         </div>
 
         {/* Contact Us */}
         <div>
-          <p><h3 className="text-lg font-semibold mb-3">Dhaka</h3></p>
+          <p><h3 className="text-[14px] font-semibold mb-2">Central Hub</h3></p>
+          <p className="mb-1">Dhaka</p>
           <p className="mb-1">Tangail, Dhanbari</p>
           <p className="mb-1">01315889487</p>
           <p className="mb-3"><a href="mailto:support@chmpstudio.com" className="hover:text-red-500">adibmahi14@gmail.com</a></p>
