@@ -1,22 +1,28 @@
 import { useDispatch } from "react-redux";
 import { formatCurrency } from "../../utitlis/helpers";
 import { addItem } from "../cart/cartSlice";
+
 /* eslint-disable react/prop-types */
 
 function BurgerItem({ burger }) {
   const {id, name, unitPrice, ingredients, soldOut, imageUrl } = burger;
   const dispatch = useDispatch();
+  
 
+  
   function handleAddCart() {
     console.log(id);
     const newItme = {
       itemId: id,
+     imageUrl,
       name,
       quantity: 1, 
       unitPrice,
       totalPrice: unitPrice * 1,  
 
     };
+
+    
 
     dispatch(addItem(newItme));
   }
@@ -47,8 +53,10 @@ function BurgerItem({ burger }) {
         {!soldOut && (
           <button onClick={handleAddCart} className="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition duration-300">
             Add to Cart
-          </button>
-        )}
+          </button> 
+      )} 
+
+
       </div>
     </li>
   );

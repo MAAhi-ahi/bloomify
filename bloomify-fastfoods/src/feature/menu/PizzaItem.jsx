@@ -11,6 +11,7 @@ function PizzaItem({ pizza }) {
     console.log(id);
     const newItme = {
       itemId: id,
+      imageUrl,
       name,
       quantity: 1, 
       unitPrice,
