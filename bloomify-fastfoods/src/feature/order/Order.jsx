@@ -219,7 +219,7 @@ function Order() {
       <div className="mt-8">
         <button
           onClick={() => alert("You can track your order!")}
-          className="w-full py-3 px-6 bg-indigo-600 text-white rounded-lg font-medium text-lg sm:text-xl hover:bg-indigo-700 transition duration-300"
+          className="w-full py-3 px-6 bg-orange-600 text-white rounded-lg font-medium text-lg sm:text-xl hover:bg-orange-700 transition duration-300"
         >
           Track Order
         </button>

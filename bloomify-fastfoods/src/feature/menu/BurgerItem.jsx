@@ -1,12 +1,15 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { formatCurrency } from "../../utitlis/helpers";
-import { addItem } from "../cart/cartSlice";
+import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
+import DeleteItem from "./DeleteItem";
 
 /* eslint-disable react/prop-types */
 
 function BurgerItem({ burger }) {
   const {id, name, unitPrice, ingredients, soldOut, imageUrl } = burger;
   const dispatch = useDispatch();
+  const currentQuantity = useSelector(getCurrentQuantityById(id));
+  const isInCart = currentQuantity > 0;
   
 
   
@@ -14,7 +17,7 @@ function BurgerItem({ burger }) {
     console.log(id);
     const newItme = {
       itemId: id,
-     imageUrl,
+      imageUrl,
       name,
       quantity: 1, 
       unitPrice,
@@ -50,8 +53,9 @@ function BurgerItem({ burger }) {
             <p className="text-red-500 font-bold text-lg">Sold Out</p>
           )}
         </div>
-        {!soldOut && (
-          <button onClick={handleAddCart} className="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition duration-300">
+        {isInCart &&  <DeleteItem itemId={id}/>}
+        {!soldOut && !isInCart && (
+          <button onClick={handleAddCart} className="mt-4 w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition duration-300">
             Add to Cart
           </button> 
       )} 

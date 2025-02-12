@@ -56,7 +56,7 @@ function FAQPage() {
       </div>
       <div className="space-y-4">
         {faqsData.map((faq, index) => (
-          <div
+        /* <div
             key={index}
             className="border border-gray-300 rounded-lg overflow-hidden shadow-sm"
           >
@@ -74,23 +74,47 @@ function FAQPage() {
                 {faq.answer}
               </div>
             )}
-          </div>
-        ))}
+          </div> */
+          <div
+  key={index}
+  className="border border-gray-300 rounded-lg overflow-hidden shadow-lg mb-4"
+>
+  <button
+    onClick={() => toggleFAQ(index)}
+    className="w-full text-left px-6 py-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 hover:bg-gradient-to-l focus:outline-none focus:ring-2 focus:ring-blue-500 flex justify-between items-center text-white"
+  >
+    <span className="text-lg font-semibold">{faq.question}</span>
+    <span className="text-2xl">
+      {activeIndex === index ? "-" : "+"}
+    </span>
+  </button>
+  {activeIndex === index && (
+    <div className="px-6 py-4 bg-white text-gray-700 rounded-b-lg shadow-inner">
+      {faq.answer}
+    </div>
+  )}
+</div>
+
+        ))} 
       </div>
 
-      <section className="mt-12 flex flex-col md:flex-row items-center bg-gray-100 p-6 rounded-lg shadow-lg">
-        <img
-          src="/images/eatburger.jpg"
-          alt="Person eating burger"
-          className="w-full md:w-1/2 h-64 object-cover rounded-lg mb-4 md:mb-0 md:mr-6"
-        />
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-md text-center md:text-left">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Experience the Best Taste!</h2>
-          <p className="text-gray-600">
-            Our fast food is crafted with the finest ingredients to bring you unparalleled flavors. From juicy burgers to crispy tacos and cheesy pizzas, every bite is a taste of perfection. Come and indulge in a delightful fast food journey!
-          </p>
-        </div>
-      </section>
+      <section className="mt-12 flex flex-col md:flex-row items-center bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 p-6 rounded-2xl shadow-2xl">
+  <img
+    src="/images/eatburger.jpg"
+    alt="Person eating burger"
+    className="w-full md:w-1/2 h-64 object-cover rounded-lg mb-4 md:mb-0 md:mr-6 transition-transform duration-500 hover:scale-105"
+  />
+  <div className="bg-white p-4 md:p-6 rounded-lg shadow-xl text-center md:text-left">
+    <h2 className="text-3xl font-extrabold text-gray-800 mb-3 leading-tight">
+      Experience the Best Taste!
+    </h2>
+    <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
+      Our fast food is crafted with the finest ingredients to bring you unparalleled flavors. From juicy burgers to crispy tacos and cheesy pizzas, every bite is a taste of perfection. Come and indulge in a delightful fast food journey!
+    </p>
+  </div>
+</section>
+
+
     </div>
   );
 }

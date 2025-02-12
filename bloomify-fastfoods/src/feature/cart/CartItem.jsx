@@ -41,7 +41,7 @@ function CartItem({ item }) {
   {/* Increase Button */}
   <button
     onClick={handleIncrease}
-    className="px-3 py-1 sm:px-4 sm:py-2 text-base sm:text-lg font-semibold text-white bg-blue-500 rounded-md shadow-md hover:bg-blue-600 transition duration-200"
+    className="px-3 py-1 sm:px-4 sm:py-2 text-base sm:text-lg font-semibold text-white bg-orange-500 rounded-md shadow-md hover:bg-orange-600 transition duration-200"
   >
     +
   </button>

@@ -9,7 +9,7 @@ function Header() {
           alt="Bloom food" 
           className="h-12 w-12 object-cover rounded-full shadow-lg"
         />
-        <span className="text-2xl font-bold text-gray-800 hover:text-blue-500 transition">
+        <span className="text-2xl font-bold text-orange-600 hover:text-orange-700 transition">
           Bloomify
         </span>
       </Link>
