@@ -1,10 +1,11 @@
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
 import EmptyCart from "../cart/EmptyCart";
 import store from "../../store";
 import { formatCurrency } from "../../utitlis/helpers";
+import { fetchAddress } from "../user/userSlice";
 //import { useState } from "react";
 
 const isValidPhone = (str) =>
@@ -14,11 +15,20 @@ const isValidPhone = (str) =>
 
 function CreateOrder() {
   //const [withPriority, setWithPriority] = useState(false);
+  const {
+    status: addressStatus,
+    position,
+    address,
+    error: errorAddress,
+  } = useSelector((state) => state.user);
+  const isLoadingAddress = addressStatus === 'loading';
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const formErrors = useActionData();
   const cart = useSelector(getCart);
   const totalCartPrice = useSelector(getTotalCartPrice);
+  const dispatch = useDispatch();
+ 
   //const priorityPrice = withPriority ? totalCartPrice * 0.1 : 0;
   //const totalPrice = totalCartPrice + priorityPrice;
 
@@ -29,7 +39,6 @@ function CreateOrder() {
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">
         Ready to order? Let&apos;s go!
       </h2>
-
       <Form method="POST" className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">
@@ -63,12 +72,33 @@ function CreateOrder() {
             Address
           </label>
           <input
+           disabled={isLoadingAddress}
+           defaultValue={address}
             type="text"
             name="address"
             required
             className="mt-1 p-2 w-full border rounded-lg focus:ring focus:ring-indigo-300"
           />
+            {addressStatus === 'error' && (
+              <p className="text-red-700 text-sm mt-1">
+                {errorAddress}
+              </p>
+            )}
         </div>
+        {!position.latitude && !position.longitude && (
+            <span className="mt-2 text-blue-500 hover:text-blue-700">
+              <button
+                disabled={isLoadingAddress}
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(fetchAddress());
+                }}
+                className="mt-2 p-2 w-full border rounded-lg text-blue-500 hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Get position
+              </button>
+            </span>
+          )}
 
        {/* <div className="flex items-center space-x-2">
           <input
