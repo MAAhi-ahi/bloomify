@@ -7,20 +7,21 @@ import {
   formatCurrency,
   formatDate,
 } from "../../utitlis/helpers";
+import OrderNotFound from "./OrderNotFound";
+import OrderItem from "./OrderItem";
 
 function Order() {
   const order = useLoaderData();
+
   console.log("Fetched Order Data:", order);
 
   // Ensure `return` happens only after hooks are called
   if (!order)
     return (
-      <p className="text-center text-xl text-red-500 font-medium">
-        Order not found.
-      </p>
+     <OrderNotFound/>
     );
 
-  const { id, status, estimatedDelivery, orderPrice, priority: priorityData } = order;
+  const { id, status, estimatedDelivery, orderPrice, priority: priorityData, cart } = order;
 
   // Initialize state unconditionally
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -44,7 +45,7 @@ function Order() {
   return (
     <div className="max-w-4xl mx-auto p-8 bg-white text-gray-900 shadow-lg rounded-2xl mt-14">
       <div className="text-center mb-6">
-        <h2 className="text-3xl sm:text-4xl font-bold text-indigo-600">
+        <h2 className="text-3xl sm:text-4xl font-bold text-orange-600">
           Order #{id}
         </h2>
         <p className="text-lg sm:text-xl font-semibold text-gray-600 mt-2">
@@ -67,7 +68,7 @@ function Order() {
 
       {estimatedDelivery && (
         <div className="mb-6">
-          <p className="text-lg sm:text-xl font-semibold text-indigo-600">
+          <p className="text-lg sm:text-xl font-semibold text-orange-600">
             {deliveryIn !== null && deliveryIn >= 0
               ? `Only ${deliveryIn} minutes left 😃`
               : "Order should have arrived"}
@@ -78,7 +79,14 @@ function Order() {
         </div>
       )}
 
-      <div className="space-y-4 mb-6">
+       <ul className="space-y-4 mb-4">
+         {cart.map((item) => (
+          <OrderItem item={item} key={item.pizzaId} />
+        ))}
+       </ul>
+
+
+      <div className="space-y-4 mb-6 p-4 bg-yellow-50 rounded-lg shadow-md">
         <div className="flex justify-between items-center text-lg sm:text-xl text-gray-800">
           <span>Your Price:</span>
           <span className="font-semibold">{formatCurrency(orderPrice)}</span>
