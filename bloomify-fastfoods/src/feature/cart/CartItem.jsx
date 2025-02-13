@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 import { formatCurrency } from "../../utitlis/helpers";
-import { useDispatch } from "react-redux";
-import { deleteItem, increaseItemQuantity, decreaseItemQuantity } from "./cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteItem, increaseItemQuantity, decreaseItemQuantity, getCurrentQuantityById } from "./cartSlice";
 
 function CartItem({ item }) {
-  const { itemId, name, quantity, totalPrice, imageUrl } = item;
+  const {itemId, name, quantity, totalPrice, imageUrl } = item;
   const dispatch = useDispatch();
+  const currentQuantity = useSelector(getCurrentQuantityById(itemId));
+  
 
   const handleRemove = () => {
     dispatch(deleteItem(itemId)); // Dispatch the delete action
@@ -40,12 +42,15 @@ function CartItem({ item }) {
       <div className="flex items-center space-x-2 sm:space-x-4">
   {/* Increase Button */}
   <button
+    
     onClick={handleIncrease}
     className="px-3 py-1 sm:px-4 sm:py-2 text-base sm:text-lg font-semibold text-white bg-orange-500 rounded-md shadow-md hover:bg-orange-600 transition duration-200"
   >
     +
   </button>
-
+  <span className="text-lg font-medium text-gray-800">
+          {currentQuantity}
+        </span>
   {/* Decrease Button */}
   <button
     onClick={handleDecrease}
@@ -62,8 +67,6 @@ function CartItem({ item }) {
     Remove
   </button>
 </div>
-
-
     </li>
   );
 }

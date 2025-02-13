@@ -14,6 +14,7 @@ import PizzaDes from "./ui/description/PizzaDes";
 import TacoDes from "./ui/description/TacoDes";
 import Faqs from "./ui/description/Faqs";
 import MenuHighlight from "./feature/menu/MenuHighlight";
+//import DimsumCard from "./feature/menu/DimsumCard";
 
 
 
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
     {path: "/faqs", element: <Faqs/>},
     {path: "/cart", element: <Cart />, },
     {path: "/order/new", element: <CreateOrder />, action: createOrderAction },
+    //{path: "/menu", element: <DimsumCard/>},
     
 
     {

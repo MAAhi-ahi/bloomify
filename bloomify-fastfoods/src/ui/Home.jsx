@@ -3,7 +3,7 @@ function Home() {
   return (
     <div>
       <section
-        className="bg-cover bg-center"
+        className="bg-cover bg-center -mt-2"
         style={{ backgroundImage: "url('images/web-2.jpg')" }}
       >
         <div className="bg-black bg-opacity-50 text-white text-center py-20 px-4">

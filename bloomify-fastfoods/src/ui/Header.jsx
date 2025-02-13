@@ -7,9 +7,9 @@ function Header() {
         <img 
           src="/images/logo.png" 
           alt="Bloom food" 
-          className="h-12 w-12 object-cover rounded-full shadow-lg"
+          className="h-12 w-12 object-cover rounded-full shadow-lg bg-slate-50"
         />
-        <span className="text-2xl font-bold text-orange-600 hover:text-orange-700 transition">
+        <span className="text-2xl font-bold text-slate-100 hover:text-black transition">
           Bloomify
         </span>
       </Link>

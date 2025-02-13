@@ -15,8 +15,8 @@ function Navbar() {
   };
 
   return (
-    <div className="bg-gray-50 shadow-md fixed left-0 right-0">
-      <header className="container mx-auto px-3 py-2 flex justify-between items-center">
+    <div className="bg-red-500 shadow-md fixed left-0 right-0">
+      <header className="container mx-auto px-2 py-1 flex justify-between items-center">
         <Header />
         
         {/* Search Order Component */}
@@ -26,15 +26,15 @@ function Navbar() {
         
         {/* Desktop Navbar */}
         <nav className="hidden md:flex space-x-6 text-black font-medium">
-          <NavLink to="/burgermenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-orange-500 underline" : "hover:text-orange-600 transition"}>Burger</NavLink>
-          <NavLink to="/pizzamenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-orange-500 underline" : "hover:text-orange-600 transition"}>Pizza</NavLink>
-          <NavLink to="/tacobarmenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-orange-500 underline" : "hover:text-orange-600 transition"}>Taco Bar</NavLink>
-          <NavLink to="/aboutus" onClick={closeMenu} className={({ isActive }) => isActive ? "text-orange-500 underline" : "hover:text-orange-600 transition"}>About Us</NavLink>
+          <NavLink to="/burgermenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-black underline" : "hover:text-orange-600 transition"}>Burger</NavLink>
+          <NavLink to="/pizzamenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-black underline" : "hover:text-orange-600 transition"}>Pizza</NavLink>
+          <NavLink to="/tacobarmenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-black underline" : "hover:text-orange-600 transition"}>Taco Bar</NavLink>
+          <NavLink to="/aboutus" onClick={closeMenu} className={({ isActive }) => isActive ? "text-black underline" : "hover:text-orange-600 transition"}>About Us</NavLink>
         </nav>
         
         {/* Hamburger Menu Button */}
         <button 
-          className="md:hidden text-gray-800 text-2xl"
+          className="md:hidden text-stone-100 text-2xl"
           onClick={toggleMenu}
         >
           ☰
@@ -60,22 +60,22 @@ function Navbar() {
         
         <ul className="flex flex-col items-start p-6 space-y-4 text-gray-800 font-medium">
           <li>
-            <NavLink to="/burgermenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-blue-500 underline" : "hover:text-blue-500 transition"}>
+            <NavLink to="/burgermenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-orange-500 underline" : "hover:text-blue-500 transition"}>
               Burger
             </NavLink>
           </li>
           <li>
-            <NavLink to="/pizzamenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-blue-500 underline" : "hover:text-blue-500 transition"}>
+            <NavLink to="/pizzamenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-orange-500  underline" : "hover:text-blue-500 transition"}>
               Pizza
             </NavLink>
           </li>
           <li>
-            <NavLink to="/tacobarmenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-blue-500 underline" : "hover:text-blue-500 transition"}>
+            <NavLink to="/tacobarmenu" onClick={closeMenu} className={({ isActive }) => isActive ? "text-orange-500  underline" : "hover:text-blue-500 transition"}>
               Taco Bar
             </NavLink>
           </li>
           <li>
-            <NavLink to="/aboutus" onClick={closeMenu} className={({ isActive }) => isActive ? "text-blue-500 underline" : "hover:text-blue-500 transition"}>
+            <NavLink to="/aboutus" onClick={closeMenu} className={({ isActive }) => isActive ? "text-orange-500  underline" : "hover:text-blue-500  transition"}>
               About Us
             </NavLink>
           </li>
