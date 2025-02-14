@@ -2,7 +2,7 @@
 import { formatCurrency } from "../../utitlis/helpers";
 
 function OrderItem({ item }) {
-  const { quantity, name, totalPrice, toppings = [], size = "Regular" } = item;
+  const {quantity, name, totalPrice, toppings = [], size = "Regular" } = item;
 
   return (
     <li className="flex justify-between items-center p-4 bg-orange-100 rounded-lg shadow-md">

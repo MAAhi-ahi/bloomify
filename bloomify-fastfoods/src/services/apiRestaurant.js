@@ -1,5 +1,6 @@
-const API_URL = 'https://fast-food-restapi-1.onrender.com/api';
+//const API_URL = 'https://fast-food-restapi-1.onrender.com/api';
 //const API_URL = 'https://react-fast-pizza-api.onrender.com/api';
+const API_URL = "https://fast-food-restapi-ol6p.vercel.app/api";
 
 
 

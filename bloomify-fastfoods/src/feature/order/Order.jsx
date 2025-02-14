@@ -10,6 +10,7 @@ import {
 import OrderNotFound from "./OrderNotFound";
 import OrderItem from "./OrderItem";
 
+
 function Order() {
   const order = useLoaderData();
 
@@ -21,7 +22,8 @@ function Order() {
      <OrderNotFound/>
     );
 
-  const { id, status, estimatedDelivery, orderPrice, priority: priorityData, cart } = order;
+  const  {customer, address,phone, id, status, estimatedDelivery, orderPrice, priority: priorityData, cart,} = order;
+  console.log(customer, address, phone);
 
   // Initialize state unconditionally
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -78,14 +80,17 @@ function Order() {
           </p>
         </div>
       )}
-
+      <div className="mb-6 p-4 bg-red-100 rounded-lg shadow-md">
+        <h3 className="text-xl font-semibold text-gray-800">Customer Details</h3>
+           <p className="text-lg text-gray-700"><strong>Name:</strong> {customer}</p>
+           <p className="text-lg text-gray-700"><strong>Address:</strong> {address || "Not provided"}</p>
+           <p className="text-lg text-gray-700"><strong>Phone:</strong> {phone || "Not provided"}</p>
+      </div>
        <ul className="space-y-4 mb-4">
          {cart.map((item) => (
-          <OrderItem item={item} key={item.pizzaId} />
+          <OrderItem item={item} key={item.id} />
         ))}
        </ul>
-
-
       <div className="space-y-4 mb-6 p-4 bg-yellow-50 rounded-lg shadow-md">
         <div className="flex justify-between items-center text-lg sm:text-xl text-gray-800">
           <span>Your Price:</span>
@@ -108,6 +113,7 @@ function Order() {
           </span>
         </div>
       </div>
+
 
       <div className="mt-8">
         <button
