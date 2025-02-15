@@ -1,5 +1,5 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { useLoaderData } from "react-router-dom";
+// eslint-disable react-hooks/rules-of-hooks 
+/*import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react"; // Import hooks directly here
 import { getOrder } from "../../services/apiRestaurant";
 import {
@@ -124,6 +124,162 @@ function Order() {
         </button>
       </div>
       <div className="border-b-2 border-gray-300 mt-6 w-full"></div>
+    </div>
+  );
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export async function loader({ params }) {
+  try {
+    const order = await getOrder(params.orderId);
+    return order || null;
+  } catch (error) {
+    console.error("Failed to load order:", error);
+    return null;
+  }
+}
+
+export default Order;  */
+
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { io } from "socket.io-client";
+import { formatCurrency, formatDate } from "../../utitlis/helpers"; // import helper functions
+import { getOrder } from "../../services/apiRestaurant";
+
+const socket = io("http://localhost:5006"); // Connect to the backend server
+
+function Order() {
+  const { orderId } = useParams(); // Extract the orderId from URL
+  const [order, setOrder] = useState(null); // State to store order data
+  const [status, setStatus] = useState(""); // Order status
+  const [loading, setLoading] = useState(false); // Loading state
+  const [errorMessage, setErrorMessage] = useState(""); // Error state
+
+  useEffect(() => {
+    // Fetch order details when component mounts
+    const fetchOrderDetails = async () => {
+      try {
+        const response = await fetch(`/api/order/${orderId}`);
+        
+        // Check if the response is ok (status 200)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    
+  
+        // Check if the response content is JSON
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const data = await response.json();
+          setOrder(data.order);
+          setStatus(data.order.status);
+        } else {
+          throw new Error("Expected JSON, but got something else.");
+        }
+      } catch (error) {
+        console.error("Error fetching order details:", error);
+        // Optionally, set an error state here to show an error message to the user
+      }
+    };
+  
+    fetchOrderDetails();
+
+      // Listen for status updates from backend (Socket.io)
+      socket.on("order-status-update", (data) => {
+        // If the orderId matches, update the status
+        if (data.orderId === orderId) {
+          setStatus(data.status);
+        }
+      });
+  
+      // Cleanup the socket connection when the component unmounts
+      return () => {
+        socket.off("order-status-update");
+      };
+  }, [orderId]);
+  
+  const handleStatusUpdate = async (newStatus) => {
+    try {
+      const response = await fetch("/update-order-status", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          orderId,
+          status: newStatus,
+          customerName: order.customer,
+          customerEmail: order.email,
+          orderDetails: order.cart.map((item) => item.name).join(", "),
+        }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        console.log("Order status updated successfully!");
+      }
+    } catch (error) {
+      console.error("Error updating order status:", error);
+    }
+  };
+
+  // Function to send the order notification
+  const sendOrderNotification = async () => {
+    setLoading(true); // Set loading state
+    setErrorMessage(""); // Reset any previous error
+
+    try {
+      const response = await fetch('http://localhost:5006/send-order-notification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          customerName: order.customer,
+          customerEmail: order.email,
+          orderDetails: order.cart.map((item) => item.name).join(", "),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send order notification');
+      }
+
+      const data = await response.json();
+      console.log('Order notification sent:', data);
+    } catch (error) {
+      setErrorMessage(error.message);
+      console.error('Error fetching order details:', error);
+    } finally {
+      setLoading(false); // Reset loading state
+    }
+  };
+
+  if (!order) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="order-container">
+      <h2>Order #{order.id}</h2>
+      <p>Status: {status}</p>
+      <div>
+        <button onClick={() => handleStatusUpdate("Shipped")}>Mark as Shipped</button>
+        <button onClick={() => handleStatusUpdate("Delivered")}>Mark as Delivered</button>
+        <button onClick={sendOrderNotification} disabled={loading}>
+          {loading ? 'Sending...' : 'Send Order Notification'}
+        </button>
+      </div>
+      {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+      <div>
+        <h3>Order Details:</h3>
+        <p>Customer: {order.customer}</p>
+        <p>Address: {order.address}</p>
+        <p>Phone: {order.phone}</p>
+        <p>Total Price: {formatCurrency(order.orderPrice)}</p>
+        <p>Estimated Delivery: {formatDate(order.estimatedDelivery)}</p>
+      </div>
     </div>
   );
 }
