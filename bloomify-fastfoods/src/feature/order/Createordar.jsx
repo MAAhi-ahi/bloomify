@@ -91,7 +91,7 @@ function CreateOrder() {
 }
 
 
-/*export async function action({request}) {
+export async function action({request}) {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     console.log(data);
@@ -113,8 +113,8 @@ function CreateOrder() {
     
 }
 
-*/
-export async function action({ request }) {
+
+/*export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   console.log(data);
@@ -152,7 +152,7 @@ export async function action({ request }) {
   } else {
       return { error: updateResponse.message };
   }
-}
+} */
 
 export default CreateOrder;
 
