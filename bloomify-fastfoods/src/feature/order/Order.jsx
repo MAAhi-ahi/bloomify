@@ -1,6 +1,6 @@
 // eslint-disable react-hooks/rules-of-hooks 
-/*import { useLoaderData } from "react-router-dom";
-import { useState, useEffect } from "react"; // Import hooks directly here
+import { useLoaderData } from "react-router-dom";
+import { useState, useEffect } from "react"; 
 import { getOrder } from "../../services/apiRestaurant";
 import {
   calcMinutesLeft,
@@ -16,7 +16,6 @@ function Order() {
 
   console.log("Fetched Order Data:", order);
 
-  // Ensure `return` happens only after hooks are called
   if (!order)
     return (
      <OrderNotFound/>
@@ -25,24 +24,23 @@ function Order() {
   const  {customer, address,phone, id, status, estimatedDelivery, orderPrice, priority: priorityData, cart,} = order;
   console.log(customer, address, phone);
 
-  // Initialize state unconditionally
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [priority, setPriority] = useState(priorityData ?? true); // Default to priority if it's undefined
+  const [priority, setPriority] = useState(priorityData ?? true); 
 
   const deliveryIn = estimatedDelivery
     ? calcMinutesLeft(estimatedDelivery)
     : null;
 
-  const priorityPrice = priority ? orderPrice * 0.1 : 0; // Calculate priority price if priority is true
+  const priorityPrice = priority ? orderPrice * 0.1 : 0; 
 
-  // Add priority to dependency array of `useEffect` to trigger when it changes
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    // If priorityData is updated, set it in state
     if (priorityData !== undefined && priority !== priorityData) {
       setPriority(priorityData);
     }
-  }, [priorityData, priority]); // Add both priorityData and priority to dependencies
+  }, [priorityData, priority]); 
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-white text-gray-900 shadow-lg rounded-2xl mt-14">
@@ -139,160 +137,5 @@ export async function loader({ params }) {
   }
 }
 
-export default Order;  */
+export default Order;  
 
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { io } from "socket.io-client";
-import { formatCurrency, formatDate } from "../../utitlis/helpers"; // import helper functions
-import { getOrder } from "../../services/apiRestaurant";
-
-const socket = io("http://localhost:5006"); // Connect to the backend server
-
-function Order() {
-  const { orderId } = useParams(); // Extract the orderId from URL
-  const [order, setOrder] = useState(null); // State to store order data
-  const [status, setStatus] = useState(""); // Order status
-  const [loading, setLoading] = useState(false); // Loading state
-  const [errorMessage, setErrorMessage] = useState(""); // Error state
-
-  useEffect(() => {
-    // Fetch order details when component mounts
-    const fetchOrderDetails = async () => {
-      try {
-        const response = await fetch(`/api/order/${orderId}`);
-        
-        // Check if the response is ok (status 200)
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-    
-  
-        // Check if the response content is JSON
-        const contentType = response.headers.get("content-type");
-        if (contentType && contentType.includes("application/json")) {
-          const data = await response.json();
-          setOrder(data.order);
-          setStatus(data.order.status);
-        } else {
-          throw new Error("Expected JSON, but got something else.");
-        }
-      } catch (error) {
-        console.error("Error fetching order details:", error);
-        // Optionally, set an error state here to show an error message to the user
-      }
-    };
-  
-    fetchOrderDetails();
-
-      // Listen for status updates from backend (Socket.io)
-      socket.on("order-status-update", (data) => {
-        // If the orderId matches, update the status
-        if (data.orderId === orderId) {
-          setStatus(data.status);
-        }
-      });
-  
-      // Cleanup the socket connection when the component unmounts
-      return () => {
-        socket.off("order-status-update");
-      };
-  }, [orderId]);
-  
-  const handleStatusUpdate = async (newStatus) => {
-    try {
-      const response = await fetch("/update-order-status", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          orderId,
-          status: newStatus,
-          customerName: order.customer,
-          customerEmail: order.email,
-          orderDetails: order.cart.map((item) => item.name).join(", "),
-        }),
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        console.log("Order status updated successfully!");
-      }
-    } catch (error) {
-      console.error("Error updating order status:", error);
-    }
-  };
-
-  // Function to send the order notification
-  const sendOrderNotification = async () => {
-    setLoading(true); // Set loading state
-    setErrorMessage(""); // Reset any previous error
-
-    try {
-      const response = await fetch('http://localhost:5006/send-order-notification', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          customerName: order.customer,
-          customerEmail: order.email,
-          orderDetails: order.cart.map((item) => item.name).join(", "),
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send order notification');
-      }
-
-      const data = await response.json();
-      console.log('Order notification sent:', data);
-    } catch (error) {
-      setErrorMessage(error.message);
-      console.error('Error fetching order details:', error);
-    } finally {
-      setLoading(false); // Reset loading state
-    }
-  };
-
-  if (!order) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <div className="order-container">
-      <h2>Order #{order.id}</h2>
-      <p>Status: {status}</p>
-      <div>
-        <button onClick={() => handleStatusUpdate("Shipped")}>Mark as Shipped</button>
-        <button onClick={() => handleStatusUpdate("Delivered")}>Mark as Delivered</button>
-        <button onClick={sendOrderNotification} disabled={loading}>
-          {loading ? 'Sending...' : 'Send Order Notification'}
-        </button>
-      </div>
-      {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-      <div>
-        <h3>Order Details:</h3>
-        <p>Customer: {order.customer}</p>
-        <p>Address: {order.address}</p>
-        <p>Phone: {order.phone}</p>
-        <p>Total Price: {formatCurrency(order.orderPrice)}</p>
-        <p>Estimated Delivery: {formatDate(order.estimatedDelivery)}</p>
-      </div>
-    </div>
-  );
-}
-
-// eslint-disable-next-line react-refresh/only-export-components
-export async function loader({ params }) {
-  try {
-    const order = await getOrder(params.orderId);
-    return order || null;
-  } catch (error) {
-    console.error("Failed to load order:", error);
-    return null;
-  }
-}
-
-export default Order;

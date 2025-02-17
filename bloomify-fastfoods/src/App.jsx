@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./ui/Home";
 import Cart from "./feature/cart/Cart";
-import CreateOrder, {action as createOrderAction} from "./feature/order/CreateOrder";
-import Order, {loader as orderLoader} from "./feature/order/Order";
+//import CreateOrder, {action as createOrderAction} from "./feature/order/CreateOrder";
+//import Order, {loader as orderLoader} from "./feature/order/Order";
 import Burgermenu, {loader as getBurgerLoader} from "./feature/menu/Burgermenu";
 import Pizzamenu, {loader as getPizzaLoader} from "./feature/menu/Pizzamenu";
 import Tacobarmenu, {loader as getTacobarLoader} from "./feature/menu/Tacobarmenu";
@@ -14,7 +14,10 @@ import PizzaDes from "./ui/description/PizzaDes";
 import TacoDes from "./ui/description/TacoDes";
 import Faqs from "./ui/description/Faqs";
 import MenuHighlight from "./feature/menu/MenuHighlight";
-//import DimsumCard from "./feature/menu/DimsumCard";
+import Createorder, {action as createOrderAction}  from "./feature/order/Createordar";
+import Orders,{loader as orderLoader}  from "./feature/order/Orders";
+
+
 
 
 
@@ -25,9 +28,9 @@ const router = createBrowserRouter([
   
   children: [
     {path: "/", element: <Home/>},
-    {path: "/burgermenu", element: <Burgermenu/>, loader: getBurgerLoader, errorElement: <Error />, },
-    {path: "/pizzamenu", element: <Pizzamenu/>, loader: getPizzaLoader, errorElement: <Error />,},
-    {path: "/tacobarmenu", element: <Tacobarmenu/>, loader: getTacobarLoader, errorElement: <Error />,},
+    {path: "/burgermenu", element: <Burgermenu/>, loader: getBurgerLoader, errorElement: <Error />},
+    {path: "/pizzamenu", element: <Pizzamenu/>, loader: getPizzaLoader, errorElement: <Error />},
+    {path: "/tacobarmenu", element: <Tacobarmenu/>, loader: getTacobarLoader, errorElement: <Error />},
     {path: "/menuhighlight", element: <MenuHighlight/>},
     {path: "/aboutus", element: <Aboutus/>, errorElement: <Error/>},
     {path: "/aboutburger", element: <BurgerDes/>},
@@ -35,16 +38,10 @@ const router = createBrowserRouter([
     {path: "/abouttacobar", element: <TacoDes/>},
     {path: "/faqs", element: <Faqs/>},
     {path: "/cart", element: <Cart />, },
-    {path: "/order/new", element: <CreateOrder />, action: createOrderAction },
-    //{path: "/menu", element: <DimsumCard/>},
-    
-
-    {
-      path: "/order/:orderId",
-      element: <Order />,
-      loader: orderLoader,
-      errorElement: <Error />,
-     },
+   // {path: "/order/new", element: <CreateOrder />, action: createOrderAction },
+    {path: "/order/new", element: <Createorder />, action: createOrderAction},
+    {path: "/order/:orderId", loader: orderLoader, errorElement: <Error />, element: <Orders />}
+   // {path: "/order/:orderId", element: <Order />, loader: orderLoader, errorElement: <Error />,},
   ]
  }
 ])
