@@ -22,7 +22,7 @@ function Order() {
      <OrderNotFound/>
     );
 
-  const  {customer, address,phone, id, status, estimatedDelivery, orderPrice, priority: priorityData, cart,} = order;
+  const  {customer, address, email, phone, id, status, estimatedDelivery, orderPrice, priority: priorityData, cart,} = order;
   console.log(customer, address, phone);
 
 
@@ -82,8 +82,9 @@ function Order() {
       <div className="mb-6 p-4 bg-red-100 rounded-lg shadow-md">
         <h3 className="text-xl font-semibold text-gray-800">Customer Details</h3>
            <p className="text-lg text-gray-700"><strong>Name:</strong> {customer}</p>
-           <p className="text-lg text-gray-700"><strong>Address:</strong> {address || "Not provided"}</p>
-           <p className="text-lg text-gray-700"><strong>Phone:</strong> {phone || "Not provided"}</p>
+           <p className="text-lg text-gray-700"><strong>Address:</strong> {address}</p>
+           <p className="text-lg text-gray-700"><strong>Phone:</strong> {phone}</p>
+           <p className="text-lg text-gray-700"><strong>Email:</strong>{email}</p>
       </div>
        <ul className="space-y-4 mb-4">
          {cart.map((item) => (

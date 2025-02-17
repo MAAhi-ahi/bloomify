@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3008'; 
+const API_BASE_URL = 'http://localhost:3007'; 
 export async function createOrder(newOrder) {
   try {
     const res = await fetch(`${API_BASE_URL}/api/order`, {
