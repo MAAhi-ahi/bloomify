@@ -50,6 +50,17 @@ function CreateOrder() {
             className="mt-1 p-2 w-full border rounded-lg focus:ring focus:ring-indigo-300"
           />
         </div>
+        <div>
+        <label className="block text-sm font-medium text-gray-700">
+            Email address
+          </label>
+          <input
+            type="text"
+            name="email"
+            required
+            className="mt-1 p-2 w-full border rounded-lg focus:ring focus:ring-indigo-300"
+          />
+        </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700">
