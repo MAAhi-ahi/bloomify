@@ -106,7 +106,7 @@ export async function getOrderById(orderId) {
 
 export async function updateOrderStatus(orderId, status, customerEmail, customerName, phone, address, orderDetails) {
   try {
-    const res = await fetch(`${API_BASE_URL}/update-order-status`, {
+    const res = await fetch(`${API_BASE_URL}/api/orders/${orderId}/update-order-status`, {
       method: 'POST',
       body: JSON.stringify({
         orderId,
