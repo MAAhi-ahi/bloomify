@@ -2,7 +2,7 @@
 //import { useState } from "react";
 
 import { Form, redirect } from "react-router-dom";
-import { createOrder, updateOrderStatus } from "../../services/apiOrder";
+import { createOrder } from "../../services/apiOrder";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
