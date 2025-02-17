@@ -75,7 +75,7 @@ export const updateOrderStatus = async (statusData) => {
 // services/api.js
 
 
-const API_BASE_URL = ' http://localhost:3000'; // Your backend URL
+const API_BASE_URL = ' http://localhost:3009'; // Your backend URL
 export async function createOrder(newOrder) {
   try {
     const res = await fetch(`${API_BASE_URL}/api/order`, {
