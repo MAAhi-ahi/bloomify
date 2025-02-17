@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5001'; 
+const API_BASE_URL = 'https://bloomify-mahi-backend-8zijhj043-maahi-ahis-projects.vercel.app'; 
 export async function createOrder(newOrder) {
   try {
     const res = await fetch(`${API_BASE_URL}/api/order`, {
