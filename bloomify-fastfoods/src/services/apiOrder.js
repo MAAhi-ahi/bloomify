@@ -103,3 +103,30 @@ export async function getOrderById(orderId) {
     return data
 };
 
+
+export async function updateOrderStatus(orderId, status, customerEmail, customerName, phone, address, orderDetails) {
+  try {
+    const res = await fetch(`${API_BASE_URL}//update-order-status`, {
+      method: 'POST',
+      body: JSON.stringify({
+        orderId,
+        status,
+        customerEmail,
+        customerName,
+        phone,
+        address,
+        orderDetails,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!res.ok) throw Error('Failed to update order status');
+    const { success, message } = await res.json();
+    return { success, message };
+  } catch (error) {
+    throw Error(error.message || 'Failed to update order status');
+  }
+}
+

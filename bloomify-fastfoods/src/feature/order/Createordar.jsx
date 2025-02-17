@@ -2,7 +2,7 @@
 //import { useState } from "react";
 
 import { Form, redirect } from "react-router-dom";
-import { createOrder } from "../../services/apiOrder";
+import { createOrder, updateOrderStatus } from "../../services/apiOrder";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -91,7 +91,7 @@ function CreateOrder() {
 }
 
 
-export async function action({request}) {
+/*export async function action({request}) {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     console.log(data);
@@ -113,4 +113,46 @@ export async function action({request}) {
     
 }
 
+*/
+export async function action({ request }) {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  console.log(data);
+
+  const order = {
+      ...data,
+      cart: JSON.parse(data.cart),
+      priority: data.priority === "true",
+  };
+
+  console.log(order);
+
+  const errors = {};
+  if (!isValidPhone(order.phone))
+      errors.phone = "Please give us your correct phone number. We might need it to contact you.";
+  if (Object.keys(errors).length > 0) return errors;
+
+  
+  const newOrder = await createOrder(order);
+
+  
+  const updateResponse = await updateOrderStatus(
+      newOrder.id,             
+      "Pending",         
+      order.email,       
+      order.customer,    
+      order.phone,       
+      order.address,        
+      order.cart         
+  );
+  console.log(updateResponse);
+
+  if (updateResponse.success) {
+      return redirect(`/order/${newOrder.id}`);
+  } else {
+      return { error: updateResponse.message };
+  }
+}
+
 export default CreateOrder;
+
