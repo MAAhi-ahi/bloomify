@@ -16,7 +16,7 @@ function Navbar() {
 
   return (
     <div className="bg-red-500 shadow-md fixed left-0 right-0">
-      <header className="container mx-auto px-2 py-1 flex justify-between items-center">
+      <header className="container mx-auto px-1 py-0 flex justify-between items-center">
         <Header />
         
         {/* Search Order Component */}
