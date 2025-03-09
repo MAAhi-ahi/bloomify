@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Buttons from "./Buttons";
 function Home() {
   return (
     <div>
@@ -14,9 +15,10 @@ function Home() {
           Savor the taste of perfection with our wide range of mouthwatering options – from juicy chicken and beef burgers to tantalizing pizzas and fish tacos. Each bite is crafted with the finest ingredients, all nestled between a fresh, soft bun or perfect pizza crust.
           </p>
         <Link to="/menuhighlight">
-        <button className="mt-6 bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-full text-lg">
+      {/* <button className="mt-6 bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-full text-lg">
             Add to Order
-        </button>
+        </button> */}
+        <Buttons/>
         </Link>
         </div>
       </section>
